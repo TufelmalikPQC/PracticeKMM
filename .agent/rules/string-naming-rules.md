@@ -1,60 +1,66 @@
----
-trigger: always_on
----
-
 # String Naming Rules
 
-> [Official Reference](https://developer.android.com/guide/topics/resources/string-resource)
-
 > [!CAUTION]
-> **NEVER use hardcoded strings.** All user-facing text MUST come from `strings.xml`.
+> **NEVER write text directly in Compose code.**  
+> **ALWAYS use `stringResource(R.string.xxx)`**
 
-## Prefix Convention
+## MANDATORY 2-Step Process
 
-| Prefix | Usage | Example |
-|--------|-------|---------|
-| `action_` | Buttons, clickable actions | `action_submit` |
-| `str_` | General text | `str_welcome_message` |
-| `title_` | Screen/section titles | `title_home` |
-| `msg_` | User messages | `msg_success` |
-| `error_` | Error messages | `error_network` |
-| `hint_` | Input hints | `hint_enter_email` |
-| `label_` | UI labels | `label_username` |
-| `cd_` | Content descriptions | `cd_menu_icon` |
+### Step 1: Add to `strings.xml`
 
-## Core Rules
-- Use **snake_case** for names
-- **No duplicates** – reuse same string resource
-- **Purpose-based** names, not location-based
-
-## Quick Example
 ```xml
 <string name="action_login">Login</string>
-<string name="title_home">Home</string>
-<string name="error_network">Network error</string>
-<string name="cd_back_button">Navigate back</string>
 ```
 
-## Usage in Compose
+### Step 2: Use in Compose
+
 ```kotlin
-Text(stringResource(R.string.title_home))
-Icon(Icons.Default.Menu, contentDescription = stringResource(R.string.cd_menu_icon))
+Text(stringResource(R.string.action_login))
 ```
 
-## ❌ DON'T
-```xml
-<string name="login">Login</string>           <!-- No prefix -->
-<string name="home_screen_title">Home</string> <!-- Location-based -->
+---
+
+## Prefixes (MUST use one)
+
+| Prefix | For | Example |
+|--------|-----|---------|
+| `action_` | Buttons | `action_submit` |
+| `title_` | Titles | `title_home` |
+| `msg_` | Messages | `msg_success` |
+| `error_` | Errors | `error_network` |
+| `hint_` | Hints | `hint_email` |
+| `label_` | Labels | `label_name` |
+| `str_` | Other | `str_welcome` |
+
+## Format: `prefix_purpose` in snake_case
+
+---
+
+## ❌ WRONG (hardcoded in Compose)
+
+```kotlin
+Text("Login")
+Button(onClick = {}) { Text("Submit") }
 ```
 
-## ✅ DO
-```xml
-<string name="action_login">Login</string>
-<string name="title_home">Home</string>
+## ✅ RIGHT (stringResource)
+
+```kotlin
+Text(stringResource(R.string.action_login))
+Button(onClick = {}) { Text(stringResource(R.string.action_submit)) }
 ```
 
-## Formatting & Plurals
+---
+
+## Plurals
+
 ```xml
-<string name="msg_welcome">Welcome, %1$s!</string>
-<plurals name="msg_items"><item quantity="one">%d item</item></plurals>
+<plurals name="msg_items">
+    <item quantity="one">%d item</item>
+    <item quantity="other">%d items</item>
+</plurals>
+```
+
+```kotlin
+pluralStringResource(R.plurals.msg_items, count, count)
 ```

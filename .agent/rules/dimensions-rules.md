@@ -1,50 +1,58 @@
 # Dimensions Rules
 
-> **Why**: Centralized dimensions ensure consistency and easy updates.
+> All `.dp`/`.sp` values must be in `theme/Dimens.kt`. Never hardcode in UI.
 
-## ✅ DO
+## Naming Convention (Material Design 3 - 8dp Grid)
 
-- Create `Dimensions.kt` in `theme/`
-- Define all dp/sp values there
-- Use dimensions from file
+| Group | Prefix | Scale (dp) | Based On |
+|-------|--------|------------|----------|
+| **Spacing** | `spacing` | `None(0)` `Xxs(4)` `Xs(8)` `Sm(12)` `Md(16)` `Lg(24)` `Xl(32)` `Xxl(48)` | 8dp grid |
+| **Radius** | `corner` | `None(0)` `Xs(4)` `Sm(8)` `Md(12)` `Lg(16)` `Xl(28)` `Full(9999)` | M3 Shape |
+| **Icon** | `icon` | `Xs(16)` `Sm(20)` `Md(24)` `Lg(40)` `Xl(48)` | M3 Icons |
+| **Elevation** | `elevation` | `Level0(0)` `Level1(1)` `Level2(3)` `Level3(6)` `Level4(8)` `Level5(12)` | M3 Elevation |
+| **Touch** | `touch` | `Min(48)` | Accessibility |
+| **Stroke** | `stroke` | `Thin(1)` `Thick(2)` | M3 Outline |
 
-## ❌ DON'T
+### Typography (use `MaterialTheme.typography` - not raw sp)
 
-- Don't hardcode `.dp` or `.sp` in UI
+| Token | Font Size (sp) | Line Height (sp) |
+|-------|----------------|------------------|
+| `displayLarge` | 57 | 64 |
+| `displayMedium` | 45 | 52 |
+| `displaySmall` | 36 | 44 |
+| `headlineLarge` | 32 | 40 |
+| `headlineMedium` | 28 | 36 |
+| `headlineSmall` | 24 | 32 |
+| `titleLarge` | 22 | 28 |
+| `titleMedium` | 16 | 24 |
+| `titleSmall` | 14 | 20 |
+| `bodyLarge` | 16 | 24 |
+| `bodyMedium` | 14 | 20 |
+| `bodySmall` | 12 | 16 |
+| `labelLarge` | 14 | 20 |
+| `labelMedium` | 12 | 16 |
+| `labelSmall` | 11 | 16 |
 
-## Dimensions.kt
+## Content-Aware Padding Rule
 
-```kotlin
-object Dimens {
-    // Padding
-    val paddingXs = 4.dp
-    val paddingSm = 8.dp
-    val paddingMd = 16.dp
-    val paddingLg = 24.dp
-    
-    // Radius
-    val radiusSm = 4.dp
-    val radiusMd = 8.dp
-    val radiusLg = 16.dp
-    
-    // Font sizes
-    val fontSm = 12.sp
-    val fontMd = 16.sp
-    val fontLg = 24.sp
-    
-    // Touch target
-    val minTouchTarget = 48.dp
-}
+**Problem**: Icon (16dp) inside container with 24dp padding → icon looks too small.
+
+**Formula**: `Effective Padding = Container Padding - Content Size`
+
+```kotlin-example
+// ❌ Wrong
+Box(Modifier.padding(24.dp)) { Icon(size = 16.dp) }
+
+// ✅ Correct: 24 - 16 = 8dp
+Box(Modifier.padding(Dimens.paddingSm)) { Icon(size = Dimens.iconSm) }
 ```
 
 ## Usage
 
 ```kotlin
-// ✅ Correct
 Modifier.padding(Dimens.paddingMd)
+Spacer(Modifier.width(Dimens.spaceHMd))
+RoundedCornerShape(Dimens.radiusMd)
+Icon(modifier = Modifier.size(Dimens.iconMd))
 Text(fontSize = Dimens.fontMd)
-
-// ❌ Wrong
-Modifier.padding(16.dp)
-Text(fontSize = 16.sp)
 ```
