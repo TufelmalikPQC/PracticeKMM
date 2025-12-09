@@ -1,3 +1,57 @@
 <resources>
-    <string name="app_name">Task Manager</string>
+    <string name="app_name">Shop</string>
+
+    <!-- Search -->
+    <string name="hint_search_products">Search products</string>
+
+    <!-- Home Screen -->
+    <string name="title_home">Home</string>
+    <string name="title_hot_sales">Hot sales</string>
+    <string name="title_recently_viewed">Recently viewed</string>
+
+    <!-- Categories -->
+    <string name="label_technology">Technology</string>
+    <string name="label_fashion">Fashion</string>
+    <string name="label_sports">Sports</string>
+    <string name="label_supermarket">Supermarket</string>
+
+    <!-- Product -->
+    <string name="label_free_shipping">Free shipping</string>
+    <string name="label_including_taxes">Including taxes and duties</string>
+
+    <!-- Actions -->
+    <string name="action_add_to_cart">Add to  cart</string>
+    <string name="action_buy_now">Buy Now</string>
+    <string name="action_finalize_purchase">Finalize Purchase</string>
+    <string name="action_add_new">+ Add new</string>
+
+    <!-- Checkout -->
+    <string name="title_checkout">Checkout</string>
+    <string name="label_shipping_method">Shipping method</string>
+    <string name="label_home_delivery">Home delivery</string>
+    <string name="label_pickup_in_store">Pick up in store</string>
+    <string name="label_select_payment">Select your payment method</string>
+    <string name="label_subtotal">Subtotal</string>
+    <string name="label_shipping_cost">Shipping cost</string>
+    <string name="label_total">Total</string>
+    <string name="label_free">Free</string>
+    <string name="label_items">(%1$d items)</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_cart">Cart</string>
+    <string name="nav_wishlist">Wishlist</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Promo Banner -->
+    <string name="promo_cyber_linio">CYBER\nLINIO</string>
+    <string name="promo_discount">40%</string>
+    <string name="promo_discount_label">DSCNT</string>
+    <string name="promo_in_technology">in technology</string>
+    <string name="promo_free_shipping">FREE SHIPPING</string>
+    <string name="promo_validity">*Valid from %1$s to %2$s. Min stock: %3$d unit</string>
+
+    <!-- Rating -->
+    <string name="label_rating">%1$.1f</string>
+    <string name="label_reviews">(%1$d)</string>
 </resources>
