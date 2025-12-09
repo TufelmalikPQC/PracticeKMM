@@ -54,4 +54,35 @@
     <!-- Rating -->
     <string name="label_rating">%1$.1f</string>
     <string name="label_reviews">(%1$d)</string>
+
+    <!-- Travel App -->
+    <string name="travel_title_find_adventure">Find Your Adventure</string>
+    <string name="travel_hint_search">Find Your Adventure</string>
+    <string name="travel_tab_popular">Popular Destination</string>
+    <string name="travel_tab_create">Create your own</string>
+    <string name="travel_label_choose_transport">Choose transportation</string>
+    <string name="travel_mode_flight">Flight</string>
+    <string name="travel_mode_trains">Trains</string>
+    <string name="travel_mode_buses">Buses</string>
+    <string name="travel_mode_cabs">Cabs</string>
+    <string name="travel_city_delhi">New Delhi, India</string>
+    <string name="travel_city_goa">Goa, India</string>
+    <string name="travel_city_mumbai">Mumbai, India</string>
+    <string name="travel_code_del">DEL</string>
+    <string name="travel_code_goa">GOI</string>
+    <string name="travel_code_bom">BOM</string>
+    <string name="travel_label_depart">Depart</string>
+    <string name="travel_action_add_flight">+Add Flight</string>
+    <string name="travel_label_starting_at">Starting at %1$s</string>
+    <string name="travel_label_trusted">Trusted Partner</string>
+    <string name="travel_action_book_now">Book Now</string>
+    <string name="travel_cat_flights">Flights</string>
+    <string name="travel_cat_hotels">Hotels</string>
+    <string name="travel_cat_stays">Stays</string>
+    <string name="travel_section_personalized">Personalized trips</string>
+    <string name="travel_action_view_all">View All</string>
+    <string name="travel_section_discover">Discover your Interest</string>
+    <string name="travel_interest_trending">Trending</string>
+    <string name="travel_interest_beach">Beach</string>
+    <string name="travel_interest_food">Food</string>
 </resources>

@@ -37,18 +37,20 @@
 | `labelMedium` | 12 | 16 |
 | `labelSmall` | 11 | 16 |
 
-## Content-Aware Padding Rule
+## Dynamic Padding Rule
 
-**Problem**: Icon (16dp) inside container with 24dp padding → icon looks too small.
+> [!TIP]
+> **See**: [padding-calculation-rules](padding-calculation-rules.md) for the correct formula to calculate padding.
 
-**Formula**: `Effective Padding = Container Padding - Content Size`
+**Goal**: Center content within a target size (e.g., 48dp).
 
-```kotlin-example
-// ❌ Wrong
-Box(Modifier.padding(24.dp)) { Icon(size = 16.dp) }
+**Formula**: `(Target Size - Content Size) / 2`
 
-// ✅ Correct: 24 - 16 = 8dp
-Box(Modifier.padding(Dimensions.Spacing.Sm)) { Icon(size = Dimensions.Icon.Sm) }
+```kotlin
+// Target: 48dp, Icon: 24dp -> Padding: 12dp
+Box(Modifier.padding(Dimensions.Spacing.Sm)) { 
+    Icon(modifier = Modifier.size(Dimensions.Icon.Md)) 
+}
 ```
 
 ## Usage

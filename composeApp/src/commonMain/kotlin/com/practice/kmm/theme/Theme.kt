@@ -4,6 +4,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
+import androidx.compose.ui.graphics.Color
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
@@ -45,3 +46,33 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 
+
+val TravelLightColorScheme = lightColorScheme(
+    primary = TravelTeal,
+    onPrimary = Color.White,
+    secondary = TravelOrange,
+    onSecondary = Color.White,
+    background = Color(0xFFF5F5F5),
+    surface = Color.White,
+    onSurface = TravelTextBlack
+)
+
+@Composable
+fun TravelTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    val colorScheme = if (darkTheme) {
+        // For now using light scheme for travel as dark mode design isn't provided, 
+        // but normally would have TravelDarkColorScheme
+        TravelLightColorScheme 
+    } else {
+        TravelLightColorScheme
+    }
+
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = MaterialTheme.typography,
+        content = content
+    )
+}
