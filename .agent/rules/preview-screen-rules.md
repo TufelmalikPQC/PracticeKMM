@@ -2,6 +2,9 @@
 
 > Every component and screen must have a preview with demo data.
 
+> [!CAUTION]
+> **MANDATORY**: `PreviewScreen.kt` MUST exist at root and contain ALL screen previews. When creating/modifying ANY screen, you MUST update `PreviewScreen.kt` to include it. Never skip this step.
+
 ## File Structure
 
 ```
@@ -80,11 +83,14 @@ private fun AllPreviewsPreview() {
 - Add `@Preview` to every component
 - Add `@Preview` to every screen
 - Use demo/mock data in previews
-- Add screen preview to `PreviewScreen.kt`
+- **Always add screen preview to `PreviewScreen.kt`** after creating any screen
+- **Create `PreviewScreen.kt`** at root if it doesn't exist
 - Wrap preview in `AppTheme`
 
 ## ❌ DON'T
 
 - Don't create component without preview
 - Don't create screen without preview
+- **Don't skip adding screen to `PreviewScreen.kt`** - this is mandatory
+- Don't forget to update `PreviewScreen.kt` when adding new screens
 - Don't use real API data in previews

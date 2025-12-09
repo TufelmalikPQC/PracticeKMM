@@ -17,4 +17,4 @@
 
 ## Dimensions
 
-Use `Dimensions.kt` for all dp/sp values. See [dimensions-rules](dimensions-rules.md).
+Use/Create `Dimensions.kt` for all dp/sp values. See [dimensions-rules](dimensions-rules.md).

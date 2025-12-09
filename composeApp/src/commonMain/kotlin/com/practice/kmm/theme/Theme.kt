@@ -32,108 +32,16 @@ data class ExtendedColors(
 )
 
 val LocalExtendedColors = staticCompositionLocalOf {
-    ExtendedColors(
-        cardOrangeStart = AppColors.cardOrangeStart,
-        cardOrangeEnd = AppColors.cardOrangeEnd,
-        cardPurpleStart = AppColors.cardPurpleStart,
-        cardPurpleEnd = AppColors.cardPurpleEnd,
-        promoPurple = AppColors.promoPurple,
-        promoPink = AppColors.promoPink,
-        chipBackground = AppColors.chipBackground,
-        chipBorder = AppColors.chipBorder,
-        chipSelected = AppColors.chipSelected,
-        success = AppColors.success,
-        successBackground = AppColors.successBackground,
-        rating = AppColors.rating,
-        navSelected = AppColors.navSelected,
-        navUnselected = AppColors.navUnselected,
-        freeShipping = AppColors.freeShipping,
-        priceText = AppColors.priceText
-    )
 }
 
 private val LightColorScheme = lightColorScheme(
-    primary = AppColors.primary,
-    onPrimary = AppColors.onPrimary,
-    primaryContainer = AppColors.primaryContainer,
-    onPrimaryContainer = AppColors.onPrimaryContainer,
-    secondary = AppColors.secondary,
-    onSecondary = AppColors.onSecondary,
-    secondaryContainer = AppColors.secondaryContainer,
-    onSecondaryContainer = AppColors.onSecondaryContainer,
-    background = AppColors.background,
-    onBackground = AppColors.onBackground,
-    surface = AppColors.surface,
-    onSurface = AppColors.onSurface,
-    surfaceVariant = AppColors.surfaceVariant,
-    onSurfaceVariant = AppColors.onSurfaceVariant,
-    outline = AppColors.outline,
-    outlineVariant = AppColors.outlineVariant,
-    error = AppColors.error,
-    onError = AppColors.onError
+    primary = primary,
+    onPrimary = onPrimary
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = AppColors.primary,
-    onPrimary = AppColors.onPrimary,
-    primaryContainer = AppColors.primaryContainer,
-    onPrimaryContainer = AppColors.onPrimaryContainer,
-    secondary = AppColors.secondary,
-    onSecondary = AppColors.onSecondary,
-    background = AppColors.backgroundDark,
-    onBackground = AppColors.onBackgroundDark,
-    surface = AppColors.surfaceDark,
-    onSurface = AppColors.onSurfaceDark,
-    surfaceVariant = AppColors.surfaceVariantDark,
-    onSurfaceVariant = AppColors.onSurfaceVariant,
-    outline = AppColors.outline,
-    error = AppColors.error,
-    onError = AppColors.onError
+    primary = primary,
+    onPrimary = onPrimary
 )
 
-/**
- * Main theme composable for the Shop app.
- */
-@Composable
-fun ShopTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
-) {
-    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
 
-    val extendedColors = ExtendedColors(
-        cardOrangeStart = AppColors.cardOrangeStart,
-        cardOrangeEnd = AppColors.cardOrangeEnd,
-        cardPurpleStart = AppColors.cardPurpleStart,
-        cardPurpleEnd = AppColors.cardPurpleEnd,
-        promoPurple = AppColors.promoPurple,
-        promoPink = AppColors.promoPink,
-        chipBackground = AppColors.chipBackground,
-        chipBorder = AppColors.chipBorder,
-        chipSelected = AppColors.chipSelected,
-        success = AppColors.success,
-        successBackground = AppColors.successBackground,
-        rating = AppColors.rating,
-        navSelected = AppColors.navSelected,
-        navUnselected = AppColors.navUnselected,
-        freeShipping = AppColors.freeShipping,
-        priceText = AppColors.priceText
-    )
-
-    CompositionLocalProvider(LocalExtendedColors provides extendedColors) {
-        MaterialTheme(
-            colorScheme = colorScheme,
-            typography = AppTypography,
-            content = content
-        )
-    }
-}
-
-/**
- * Extension property to access extended colors from MaterialTheme.
- */
-object ShopTheme {
-    val extendedColors: ExtendedColors
-        @Composable
-        get() = LocalExtendedColors.current
-}

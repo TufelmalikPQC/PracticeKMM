@@ -2,6 +2,9 @@
 
 > All data classes, enums, and models must be in `models/` directory, never in UI files.
 
+> [!IMPORTANT]
+> **One Class Per File**: Each `data class`, `enum class`, `sealed class`, or `sealed interface` MUST be in its own separate file. Never combine multiple classes in a single file.
+
 ## File Structure
 
 ```
@@ -56,6 +59,8 @@ data class HomeUiState(val isLoading: Boolean, val items: List<Item>)
 ## ✅ DO
 
 - Create all models in `models/` with proper subfolder
+- **One class per file** (e.g., `User.kt` contains only `User` class)
+- Name file exactly as class name (e.g., `TaskStatus.kt` for `enum class TaskStatus`)
 - Import models where needed
 
 ## ❌ DON'T
@@ -63,3 +68,4 @@ data class HomeUiState(val isLoading: Boolean, val items: List<Item>)
 - Don't define data class in Screen files
 - Don't define enum in UI composables
 - Don't scatter models across features
+- **Don't combine multiple classes in one file**

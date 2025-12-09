@@ -24,7 +24,7 @@ composeApp/src/commonMain/
 
 ```kotlin
 // theme/Color.kt
-object AppColors {
+object ThemeColors {
     // Primary
     val primary = Color(0xFF6750A4)
     val onPrimary = Color(0xFFFFFFFF)
@@ -51,13 +51,13 @@ object AppColors {
 ```kotlin
 // theme/Theme.kt
 private val LightColorScheme = lightColorScheme(
-    primary = AppColors.primary,
-    onPrimary = AppColors.onPrimary,
-    background = AppColors.background,
-    onBackground = AppColors.onBackground,
-    surface = AppColors.surface,
-    onSurface = AppColors.onSurface,
-    error = AppColors.error
+    primary = ThemeColors.primary,
+    onPrimary = ThemeColors.onPrimary,
+    background = ThemeColors.background,
+    onBackground = ThemeColors.onBackground,
+    surface = ThemeColors.surface,
+    onSurface = ThemeColors.onSurface,
+    error = ThemeColors.error
 )
 
 @Composable
@@ -76,9 +76,9 @@ fun AppTheme(content: @Composable () -> Unit) {
 Text(color = MaterialTheme.colorScheme.primary)
 Box(modifier = Modifier.background(MaterialTheme.colorScheme.surface))
 
-// ❌ Invalid - Hardcoded or direct AppColors in UI
+// ❌ Invalid - Hardcoded or direct ThemeColors in UI
 Text(color = Color(0xFF6750A4))
-Text(color = AppColors.primary)  // Use MaterialTheme instead
+Text(color = ThemeColors.primary)  // Use MaterialTheme instead
 ```
 
 ## ✅ DO

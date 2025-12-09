@@ -1,6 +1,10 @@
 # Dimensions Rules
 
-> All `.dp`/`.sp` values must be in `theme/Dimens.kt`. Never hardcode in UI.
+> All `.dp`/`.sp` values must be in `theme/Dimensions.kt`. Never hardcode in UI.
+
+> [!IMPORTANT]
+> **Mandatory**: Create/Use `Dimensions.kt` at path: `composeApp/src/commonMain/kotlin/{package}/theme/Dimensions.kt`
+> File name is **`Dimensions.kt`** (NOT `Dimensions.kt`)
 
 ## Naming Convention (Material Design 3 - 8dp Grid)
 
@@ -44,15 +48,79 @@
 Box(Modifier.padding(24.dp)) { Icon(size = 16.dp) }
 
 // ✅ Correct: 24 - 16 = 8dp
-Box(Modifier.padding(Dimens.paddingSm)) { Icon(size = Dimens.iconSm) }
+Box(Modifier.padding(Dimensions.Spacing.Sm)) { Icon(size = Dimensions.Icon.Sm) }
 ```
 
 ## Usage
 
 ```kotlin
-Modifier.padding(Dimens.paddingMd)
-Spacer(Modifier.width(Dimens.spaceHMd))
-RoundedCornerShape(Dimens.radiusMd)
-Icon(modifier = Modifier.size(Dimens.iconMd))
-Text(fontSize = Dimens.fontMd)
+Modifier.padding(Dimensions.Spacing.Md)
+Spacer(Modifier.width(Dimensions.Spacing.Lg))
+RoundedCornerShape(Dimensions.Corner.Md)
+Icon(modifier = Modifier.size(Dimensions.Icon.Md))
+```
+
+## ✅ DO
+
+- Create `Dimensions.kt` in `theme/` folder **before** writing UI
+- Use `Dimensions.Spacing.Md` instead of `16.dp`
+- Reference `Dimensions` nested objects for all dp/sp values
+
+## ❌ DON'T
+
+- Don't hardcode `.dp` or `.sp` in composables
+- Don't name file `Dimens.kt` (use `Dimensions.kt`)
+- Don't skip creating `Dimensions.kt` when project doesn't have one
+- **Don't use numeric names** like `Size20`, `Size30`, `Padding16` - use semantic scale names (`Xs`, `Sm`, `Md`, `Lg`, `Xl`, `Xxl`)
+- **Don't invent custom names** - strictly follow the naming convention in this file
+
+## Dimensions.kt Template
+
+```kotlin
+// theme/Dimensions.kt
+package {package}.theme
+
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+
+object Dimensions {
+
+    object Spacing {
+        val None = 0.dp
+        val Xxs = 4.dp
+        val Xs = 8.dp
+        val Sm = 12.dp
+        val Md = 16.dp
+        val Lg = 24.dp
+        val Xl = 32.dp
+        val Xxl = 48.dp
+    }
+
+    object Corner {
+        val None = 0.dp
+        val Xs = 4.dp
+        val Sm = 8.dp
+        val Md = 12.dp
+        val Lg = 16.dp
+        val Xl = 28.dp
+        val Full = 9999.dp
+    }
+
+    object Icon {
+        val Xs = 16.dp
+        val Sm = 20.dp
+        val Md = 24.dp
+        val Lg = 40.dp
+        val Xl = 48.dp
+    }
+
+    object Touch {
+        val Min = 48.dp
+    }
+
+    object Stroke {
+        val Thin = 1.dp
+        val Thick = 2.dp
+    }
+}
 ```
